@@ -90,13 +90,13 @@ For example, following the execution of `./mvnw package`, you will notice amongs
 If you look at either file you will see that it contains both a Kubernetes `Deployment` and a `Service`.
 
 1. Packaging the application and build the Container Image
-
+```
 ./mvnw clean package -DskipTests -Dquarkus.container-image.build=true
-
+```
 2. Pushing the Image to Repository
-
+```
 ./mvnw clean package -DskipTests -Dquarkus.container-image.push=true
-
+```
 3. Make Container Repository Public
 In Quay.io, the repository is private by default.
 
@@ -107,9 +107,9 @@ Make Repository Public (Just to make things simpler.  We can create and use Pull
 
 
 4. Deploy Applications
-
+```
 ./mvnw clean package -DskipTests -Dquarkus.kubernetes.deploy=true
-
+```
 
 5. Open OpenShift Console
 
