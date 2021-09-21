@@ -113,7 +113,7 @@ Make Repository Public (Just to make things simpler.  We can create and use Pull
 
 5. Open OpenShift Console
 
-[Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
+![Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
 
 
 
