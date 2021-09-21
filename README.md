@@ -62,6 +62,7 @@ cd quarkus-to-kubernetes
 
 4. Add configuration to ./src/resources/application.properties
 ```
+quarkus.container-image.registry=quay.io
 quarkus.container-image.builder=docker
 quarkus.kubernetes.ingress.expose=true
 quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
