@@ -78,6 +78,7 @@ quarkus.kubernetes.ingress.host=<HOST-NAME>.<REMAINDER-OF-URL-FROM-SANDBOX-CLUST
 This command will leave Quarkus running in the foreground listening on port 8080.
 
 Visit the default endpoint: http://127.0.0.1:8080
+
 Visit the `/greeting` endpoint: http://127.0.0.1:8080/greeting
 
 
@@ -127,9 +128,6 @@ Obtain OpenShift login token from console.
 
 ![Copy Login Token](./images/copy_login_command.png)
 
-Document the url. You will need this for the Ingress configuration. 
-
-quarkus-to-kubernetes-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 
 2. Create the sample application 
 
