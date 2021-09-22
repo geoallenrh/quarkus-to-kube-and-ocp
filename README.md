@@ -64,7 +64,9 @@ cd quarkus-to-kubernetes
 ```
 quarkus.container-image.builder=docker
 quarkus.kubernetes.ingress.expose=true
-quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+#quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+#Update with your values.  The Host-Name is typically your component name and project/namespace.  Then add the rest of the URL as the example above.
+quarkus.kubernetes.ingress.host=<HOST-NAME>.<REMAINDER-OF-URL-FROM-SANDBOX-CLUSTER>
 ```
 
 5. Test Application
@@ -75,12 +77,12 @@ quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox
 
 This command will leave Quarkus running in the foreground listening on port 8080.
 
-Visit the default endpoint: [http://127.0.0.1:8080]
-Visit the `/hello` endpoint: [http://127.0.0.1:8080/hello](http://127.0.0.1:8080/hello)
+Visit the default endpoint: http://127.0.0.1:8080
+Visit the `/greeting` endpoint: http://127.0.0.1:8080/greeting
 
 
 # Deploying to Kubernetes 
-Quarkus offers the ability to automatically generate Kubernetes resources based on sane defaults and user-supplied configuration using https://github.com/dekorateio/dekorate/[dekorate].
+Quarkus offers the ability to automatically generate Kubernetes resources based on sane defaults and user-supplied configuration using https://github.com/dekorateio/dekorate/.
 
 Furthermore, Quarkus can deploy the application to a target Kubernetes cluster by applying the generated manifests to the target cluster's API Server.
 
@@ -155,7 +157,5 @@ In other words, any container image build after the initial deployment will auto
 4. Open OpenShift Console
 
 ![Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
-
-
 
 
