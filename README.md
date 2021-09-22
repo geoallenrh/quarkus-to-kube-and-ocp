@@ -65,7 +65,9 @@ cd quarkus-to-kubernetes
 quarkus.container-image.registry=quay.io
 quarkus.container-image.builder=docker
 quarkus.kubernetes.ingress.expose=true
-quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+#quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+#Update with your values.  The Host-Name is typically your component name and project/namespace.  Then add the rest of the URL as the example above.
+quarkus.kubernetes.ingress.host=<HOST-NAME>.<REMAINDER-OF-URL-FROM-SANDBOX-CLUSTER>
 ```
 
 5. Test Application
@@ -76,12 +78,13 @@ quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox
 
 This command will leave Quarkus running in the foreground listening on port 8080.
 
-Visit the default endpoint: [http://127.0.0.1:8080]
-Visit the `/hello` endpoint: [http://127.0.0.1:8080/hello](http://127.0.0.1:8080/hello)
+Visit the default endpoint: http://127.0.0.1:8080
+
+Visit the `/greeting` endpoint: http://127.0.0.1:8080/greeting
 
 
 # Deploying to Kubernetes 
-Quarkus offers the ability to automatically generate Kubernetes resources based on sane defaults and user-supplied configuration using https://github.com/dekorateio/dekorate/[dekorate].
+Quarkus offers the ability to automatically generate Kubernetes resources based on sane defaults and user-supplied configuration using https://github.com/dekorateio/dekorate/.
 
 Furthermore, Quarkus can deploy the application to a target Kubernetes cluster by applying the generated manifests to the target cluster's API Server.
 
@@ -91,13 +94,13 @@ For example, following the execution of `./mvnw package`, you will notice amongs
 If you look at either file you will see that it contains both a Kubernetes `Deployment` and a `Service`.
 
 1. Packaging the application and build the Container Image
-
+```
 ./mvnw clean package -DskipTests -Dquarkus.container-image.build=true
-
+```
 2. Pushing the Image to Repository
-
+```
 ./mvnw clean package -DskipTests -Dquarkus.container-image.push=true
-
+```
 3. Make Container Repository Public
 In Quay.io, the repository is private by default.
 
@@ -108,13 +111,13 @@ Make Repository Public (Just to make things simpler.  We can create and use Pull
 
 
 4. Deploy Applications
-
+```
 ./mvnw clean package -DskipTests -Dquarkus.kubernetes.deploy=true
-
+```
 
 5. Open OpenShift Console
 
-[Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
+![Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
 
 
 
@@ -126,9 +129,6 @@ Obtain OpenShift login token from console.
 
 ![Copy Login Token](./images/copy_login_command.png)
 
-Document the url. You will need this for the Ingress configuration. 
-
-quarkus-to-kubernetes-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 
 2. Create the sample application 
 
@@ -156,7 +156,5 @@ In other words, any container image build after the initial deployment will auto
 4. Open OpenShift Console
 
 ![Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
-
-
 
 
