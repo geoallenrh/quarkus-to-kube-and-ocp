@@ -60,7 +60,7 @@ mvn io.quarkus.platform:quarkus-maven-plugin:2.2.2.Final:create \
 cd quarkus-to-kubernetes
 ```
 
-4. Add configuration to ./src/resources/application.properties
+4. Add configuration to ./src/main/resources/application.properties
 ```
 quarkus.container-image.registry=quay.io
 quarkus.container-image.builder=docker
@@ -68,6 +68,11 @@ quarkus.kubernetes.ingress.expose=true
 #quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 #Update with your values.  The Host-Name is typically your component name and project/namespace.  Then add the rest of the URL as the example above.
 quarkus.kubernetes.ingress.host=<HOST-NAME>.<REMAINDER-OF-URL-FROM-SANDBOX-CLUSTER>
+
+#These values allow you to interact with the server without kubectl or oc installed
+quarkus.kubernetes-client.master-url=<API-SERVER>
+quarkus.kubernetes-client.username=<Your-RedHat-UserID>
+quarkus.kubernetes-client.token=<The Token from the Login Command>
 ```
 
 5. Test Application
@@ -142,7 +147,16 @@ mvn io.quarkus.platform:quarkus-maven-plugin:2.2.2.Final:create \
 cd quarkus-to-openshift
 ```
 
-3. Deploy to OpenShift
+3. Add configuration to ./src/main/resources/application.properties
+
+```
+#These values allow you to interact with the server without kubectl or oc installed
+quarkus.kubernetes-client.master-url=<API-SERVER>
+quarkus.kubernetes-client.username=<Your-RedHat-UserID>
+quarkus.kubernetes-client.token=<The Token from the Login Command>
+```
+
+4. Deploy to OpenShift
 ```
 ./mvnw clean package -DskipTests -Dquarkus.kubernetes.deploy=true
 ```
@@ -153,7 +167,7 @@ The generated resources are using OpenShift's `DeploymentConfig` that is configu
 In other words, any container image build after the initial deployment will automatically trigger redeployment, without the need to delete, update or re-apply the generated resources.
 
 
-4. Open OpenShift Console
+5. Open OpenShift Console
 
 ![Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
 
