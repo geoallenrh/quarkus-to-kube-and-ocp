@@ -40,9 +40,7 @@ Obtain OpenShift login token from console.
 
 ![Copy Login Token](./images/copy_login_command.png)
 
-Document the url. You will need this for the Ingress configuration. 
-
-quarkus-to-kubernetes-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+Document the url and the Project name. You will need this for the configuration
 
 2. Login to your Container Registry 
 ```
@@ -73,6 +71,9 @@ quarkus.kubernetes.ingress.host=<HOST-NAME>.<REMAINDER-OF-URL-FROM-SANDBOX-CLUST
 quarkus.kubernetes-client.master-url=<API-SERVER>
 quarkus.kubernetes-client.username=<Your-RedHat-UserID>
 quarkus.kubernetes-client.token=<The Token from the Login Command>
+
+#This is the Openshift Project documented earlier
+quarkus.kubernetes-client.namespace=<USERID>-dev
 ```
 
 5. Test Application
@@ -154,6 +155,9 @@ cd quarkus-to-openshift
 quarkus.kubernetes-client.master-url=<API-SERVER>
 quarkus.kubernetes-client.username=<Your-RedHat-UserID>
 quarkus.kubernetes-client.token=<The Token from the Login Command>
+quarkus.kubernetes-client.namespace=<USERID>-dev
+quarkus.openshift.route.expose=true
+
 ```
 
 4. Deploy to OpenShift
