@@ -61,6 +61,8 @@ cd quarkus-to-kubernetes
 4. Add configuration to ./src/main/resources/application.properties
 ```
 quarkus.container-image.registry=quay.io
+# If your quay.io username is different from your local OS's username, specify your quay.io username here
+# quarkus.container-image.group=my_quay_username
 quarkus.container-image.builder=docker
 quarkus.kubernetes.ingress.expose=true
 #quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
