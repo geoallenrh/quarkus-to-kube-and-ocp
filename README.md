@@ -61,13 +61,16 @@ cd quarkus-to-kubernetes
 4. Add configuration to ./src/main/resources/application.properties
 ```
 quarkus.container-image.registry=quay.io
+
 # If your quay.io username is different from your local OS's username, specify your quay.io username here
 # quarkus.container-image.group=my_quay_username
+
 quarkus.container-image.builder=docker
 quarkus.kubernetes.ingress.expose=true
-#quarkus.kubernetes.ingress.host=quarkus-to-openshift-geoallenrh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+
+
 #Update with your values.  The Host-Name is typically your component name and project/namespace.  Then add the rest of the URL as the example above.
-quarkus.kubernetes.ingress.host=<HOST-NAME>.<REMAINDER-OF-URL-FROM-SANDBOX-CLUSTER>
+quarkus.kubernetes.ingress.host=<HOST-NAME>.<APPS.REMAINDER-OF-URL-FROM-SANDBOX-CLUSTER>
 
 #These values allow you to interact with the server without kubectl or oc installed
 quarkus.kubernetes-client.master-url=<API-SERVER>
@@ -128,8 +131,12 @@ Make Repository Public (Just to make things simpler.  We can create and use Pull
 ![Click the Route link in the Developer Console ](./images/quarkus-to-kubernetes_console_ingress.png)
 
 
-
 # Quarkus to OpenShift 
+
+This part of the exercise will use the OpenShift Extension to deploy and expose the REST application.
+
+The key differences from the preivous exercise is the image build is performed in OpenShift and the image is store in the local Registry.  
+
 
 1. Authenticate with Developer Sandbox
 
