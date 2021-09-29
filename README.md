@@ -69,7 +69,8 @@ quarkus.container-image.builder=docker
 quarkus.kubernetes.ingress.expose=true
 
 
-#Update with your values.  The Host-Name is typically your component name and project/namespace.  Then add the rest of the URL as the example above.
+#Update with your values.  The Host-Name is typically your component name and project/namespace.  Then add the rest of the URL as the example below.
+#quarkus.kubernetes.ingress.host=openshift-kubernetes-geoallerh-dev.console-openshift-console.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 quarkus.kubernetes.ingress.host=<HOST-NAME>.<APPS.REMAINDER-OF-URL-FROM-SANDBOX-CLUSTER>
 
 #These values allow you to interact with the server without kubectl or oc installed
@@ -107,7 +108,15 @@ If you look at either file you will see that it contains both a Kubernetes `Depl
 1. Packaging the application and build the Container Image
 ```
 ./mvnw clean package -DskipTests -Dquarkus.container-image.build=true
+
 ```
+
+You can confirm the image has been built locally.
+
+```
+docker images quay.io/geoallen/quarkus-to-kubernetes
+```
+
 2. Pushing the Image to Repository
 ```
 ./mvnw clean package -DskipTests -Dquarkus.container-image.push=true
